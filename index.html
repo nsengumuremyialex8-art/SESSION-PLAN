@@ -50,12 +50,19 @@ button{
     align-items:center;
     padding:10px 0;
 }
-
 .center{
     text-align:center;
     display:flex;
     flex-direction:column;
     gap:4px;
+}
+
+/* EMAIL & TEL IN ONE ROW */
+.contact-row{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:4px;
 }
 
 /* PASTE LOGO */
@@ -71,6 +78,12 @@ button{
     cursor:pointer;
 }
 .paste-area img{max-height:70px;}
+
+/* NON EDITABLE TEXT */
+.non-editable{
+    pointer-events:none;
+    user-select:none;
+}
 </style>
 </head>
 
@@ -93,16 +106,16 @@ button{
         <input value="District: Ngororero" style="text-align:center;">
         <input value="Sector: Kavumu" style="text-align:center;">
 
-        <!-- Email first -->
-        <div>
-            <b>Email:</b>
-            <input value="nsengumuremyialex@gmail.com" style="width:250px;">
-        </div>
-
-        <!-- Tel on new line -->
-        <div>
-            <b>Tel:</b>
-            <input value="0788774880" style="width:150px;">
+        <!-- EMAIL AND TEL SIDE BY SIDE -->
+        <div class="contact-row">
+            <div>
+                <b>Email:</b>
+                <input value="nsengumuremyialex@gmail.com" style="width:220px;">
+            </div>
+            <div>
+                <b>Tel:</b>
+                <input value="0788774880" style="width:120px;">
+            </div>
         </div>
     </div>
 
@@ -110,7 +123,6 @@ button{
         Paste Logo
         <img id="rightLogo">
     </div>
-
 </div>
 
 <h3>SESSION PLAN</h3>
@@ -169,9 +181,38 @@ button{
 
 <br>
 
+<!-- INTRODUCTION -->
 <table>
 <tr class="section">
 <td colspan="3">Introduction</td>
+<td>Resources</td>
+<td>Duration</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<b class="non-editable">Trainer’s activity</b><br>
+• Greets the learners<br>
+• Takes the roll call<br>
+• Involves the learners in setting ground rules<br>
+• Announces the topic of the session<br>
+• Presents and explains the objectives of the session<br><br>
+
+<b class="non-editable">Learner’s activity</b><br>
+• Respond to the greetings<br>
+• Respond to the roll call<br>
+• Participate in setting ground rules<br>
+• Listen to the new topic of the session<br>
+• Follow the objectives of the session
+</td>
+
+<td><textarea rows="4">Chalk
+Chalkboard</textarea></td>
+<td><input></td>
+</tr>
+
+<tr class="section">
+<td colspan="3">Development</td>
 <td>Resources</td>
 <td>Duration</td>
 </tr>
@@ -188,15 +229,53 @@ button{
 </tr>
 
 <tr class="section">
-<td colspan="5">Conclusion</td>
+<td colspan="3">Conclusion</td>
+<td>Resources</td>
+<td>Duration</td>
 </tr>
 
 <tr>
 <td colspan="3">
-<b>Summary</b><br>
-<textarea rows="3"></textarea>
+<b class="non-editable">Summary</b><br>
+Trainer involves learners in summarizing the session by asking questions
+related to the objectives while learners participate by answering questions.
 </td>
 <td><textarea rows="3"></textarea></td>
+<td><input></td>
+</tr>
+
+<tr class="section">
+<td colspan="3">Assessment</td>
+<td>Resources</td>
+<td>Duration</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<b class="non-editable">Trainer’s activity</b><br>
+Trainer gives instructions related to assessment, distributes assessment sheet,
+while learners receive and complete the assessment.
+</td>
+<td><textarea rows="3">• Assessment sheet
+• Chalk</textarea></td>
+<td><input></td>
+</tr>
+
+<tr class="section">
+<td colspan="3">Evaluation of the session</td>
+<td>Resources</td>
+<td>Duration</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<b class="non-editable">Evaluation of the session</b><br>
+Trainer asks trainees to give feedback on the session delivery and announce
+the next topic while learners evaluate the session by answering asked
+questions.
+</td>
+<td><textarea rows="3">• Evaluation form
+• Pen/pencil</textarea></td>
 <td><input></td>
 </tr>
 </table>
