@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Session Plan Generator</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{
+    font-family:"Times New Roman", serif;
+    max-width:1000px;
+    margin:auto;
+}
+h3{text-align:center;margin:8px 0;}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+}
+table,th,td{border:1px solid black;}
+th,td{padding:6px;vertical-align:top;}
+
+input,textarea{
+    width:100%;
+    border:none;
+    font-family:inherit;
+    font-size:14px;
+}
+textarea{resize:vertical;}
+
+.section{
+    background:#f2f2f2;
+    font-weight:bold;
+    text-align:center;
+}
+
+button{
+    margin:20px 0;
+    padding:10px 20px;
+    font-size:16px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 0;
+}
+.center{
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.paste-area{
+    width:90px;
+    height:80px;
+    border:1px dashed #000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:11px;
+}
+.paste-area img{max-height:70px;}
+</style>
+</head>
+
+<body>
+
+<button onclick="generatePDF()">📄 Generate PDF</button>
+
+<div id="sessionPlan">
+
+<div class="header">
+    <div class="paste-area" contenteditable="true" data-img="leftLogo">Paste Logo<img id="leftLogo"></div>
+
+    <div class="center">
+        <input value="ES KAVUMU TSS" style="text-align:center;font-weight:bold;">
+        <input value="District: Ngororero" style="text-align:center;">
+        <input value="Sector: Kavumu" style="text-align:center;">
+        <div><b>Email:</b> <input value="nsengumuremyialex@gmail.com"></div>
+        <div><b>Tel:</b> <input value="0788774880"></div>
+    </div>
+
+    <div class="paste-area" contenteditable="true" data-img="rightLogo">Paste Logo<img id="rightLogo"></div>
+</div>
+
+<h3>SESSION PLAN</h3>
+
+<table>
+<tr>
+<th>Sector</th><td><input value="Manufacturing and Mining"></td>
+<th>Trade</th><td><input value="Manufacturing Technology"></td>
+<th>Level</th><td><input></td>
+<th>Date</th><td><input type="date"></td>
+</tr>
+</table>
+
+<br>
+
+<table>
+<tr class="section">
+<td colspan="3">Introduction</td>
+<td>Resources</td>
+<td>Duration</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<b>Trainer’s activity</b><br>
+• Greets the learners<br>
+• Takes the roll call<br>
+• Involves the learners in setting ground rules<br>
+• Announces the topic of the session<br>
+• Presents and explains the objectives of the session<br><br>
+
+<b>Learner’s activity</b><br>
+• Respond to the greetings<br>
+• Respond to the roll call<br>
+• Participate in setting ground rules<br>
+• Listen to the new topic of the session<br>
+• Follow the objectives of the session
+</td>
+
+<td>
+<textarea rows="4">Chalk
+Chalkboard</textarea>
+</td>
+
+<td><input></td>
+</tr>
+
+<tr class="section">
+<td colspan="3">Development</td>
+<td>Resources</td>
+<td>Duration</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<b>Trainer’s activity</b><br>
+<textarea rows="4"></textarea><br>
+<b>Learner’s activity</b><br>
+<textarea rows="4"></textarea>
+</td>
+<td><textarea rows="4"></textarea></td>
+<td><input></td>
+</tr>
+
+<tr class="section">
+<td colspan="3">Conclusion</td>
+<td>Resources</td>
+<td>Duration</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<b>Summary</b><br>
+Trainer involves learners in summarizing the session by asking questions
+related to the objectives while learners participate by answering questions.
+</td>
+<td><textarea rows="3"></textarea></td>
+<td><input></td>
+</tr>
+
+<tr class="section">
+<td colspan="3">Assessment</td>
+<td>Resources</td>
+<td>Duration</td>
+</tr>
+
+<tr>
+<td colspan="3">
+Trainer gives instructions related to assessment, distributes assessment sheet,
+while learners receive and complete the assessment.
+</td>
+<td>• Attendance sheet</td>
+<td><input></td>
+</tr>
+
+<tr class="section">
+<td colspan="3">Evaluation of the session</td>
+<td>Resources</td>
+<td>Duration</td>
+</tr>
+
+<tr>
+<td colspan="3">
+Trainer asks trainees to give feedback on the session delivery and announce
+the next topic while learners evaluate the session by answering asked
+questions.
+</td>
+<td>• Various drawing materials</td>
+<td><input></td>
+</tr>
+
+</table>
+
+</div>
+
+<script>
+document.querySelectorAll(".paste-area").forEach(area=>{
+    area.addEventListener("paste",e=>{
+        const items=e.clipboardData.items;
+        for(let item of items){
+            if(item.type.includes("image")){
+                const reader=new FileReader();
+                reader.onload=ev=>{
+                    document.getElementById(area.dataset.img).src=ev.target.result;
+                };
+                reader.readAsDataURL(item.getAsFile());
+            }
+        }
+        e.preventDefault();
+    });
+});
+
+async function generatePDF(){
+    const { jsPDF } = window.jspdf;
+    const el=document.getElementById("sessionPlan");
+    const canvas=await html2canvas(el,{scale:2});
+    const img=canvas.toDataURL("image/png");
+
+    const pdf=new jsPDF("p","mm","a4");
+    pdf.addImage(img,"PNG",0,0,210,297);
+    pdf.save("Session_Plan.pdf");
+}
+</script>
+
+</body>
+</html>
