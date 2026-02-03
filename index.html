@@ -50,19 +50,12 @@ button{
     align-items:center;
     padding:10px 0;
 }
+
 .center{
     text-align:center;
     display:flex;
     flex-direction:column;
     gap:4px;
-}
-
-/* EMAIL & TEL IN ONE ROW */
-.contact-row{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    margin-top:4px;
 }
 
 /* PASTE LOGO */
@@ -78,12 +71,6 @@ button{
     cursor:pointer;
 }
 .paste-area img{max-height:70px;}
-
-/* NON EDITABLE TEXT */
-.non-editable{
-    pointer-events:none;
-    user-select:none;
-}
 </style>
 </head>
 
@@ -106,16 +93,10 @@ button{
         <input value="District: Ngororero" style="text-align:center;">
         <input value="Sector: Kavumu" style="text-align:center;">
 
-        <!-- EMAIL AND TEL SIDE BY SIDE -->
-        <div class="contact-row">
-            <div>
-                <b>Email:</b>
-                <input value="nsengumuremyialex@gmail.com" style="width:220px;">
-            </div>
-            <div>
-                <b>Tel:</b>
-                <input value="0788774880" style="width:120px;">
-            </div>
+        <!-- Email and Tel side by side -->
+        <div style="display:flex; justify-content:center; gap:30px;">
+            <div><b>Email:</b> <input value="nsengumuremyialex@gmail.com" style="width:250px;"></div>
+            <div><b>Tel:</b> <input value="0788774880" style="width:150px;"></div>
         </div>
     </div>
 
@@ -123,11 +104,19 @@ button{
         Paste Logo
         <img id="rightLogo">
     </div>
+
 </div>
 
 <h3>SESSION PLAN</h3>
 
 <table>
+<tr>
+<th>Module Code</th><td><input></td>
+<th>Module Title</th><td><input></td>
+<th>Duration</th><td><input></td>
+<th>Class</th><td><input></td>
+</tr>
+
 <tr>
 <th>Sector</th><td><input value="Manufacturing and Mining"></td>
 <th>Trade</th><td><input value="Manufacturing Technology"></td>
@@ -140,17 +129,6 @@ button{
 <td colspan="3"><input></td>
 <th>Term</th>
 <td colspan="3"><input></td>
-</tr>
-
-<tr>
-<th>Module title</th>
-<td colspan="7"><input></td>
-</tr>
-
-<tr>
-<th>Week</th><td><input></td>
-<th>No. Trainees</th><td><input type="number"></td>
-<th>Class</th><td colspan="3"><input></td>
 </tr>
 
 <tr>
@@ -170,18 +148,25 @@ button{
 
 <tr>
 <th>Objectives</th>
-<td colspan="7"><textarea rows="5"></textarea></td>
+<td colspan="7">
+<b>By the end of this session learner should be able to:</b>
+<textarea rows="5"></textarea>
+</td>
 </tr>
 
 <tr>
 <th>Facilitation techniques</th>
-<td colspan="7"><textarea rows="3"></textarea></td>
+<td colspan="7">
+• Demonstration<br>
+• Group Discussion<br>
+• Practical Exercise<br>
+• Trainer Guide
+</td>
 </tr>
 </table>
 
 <br>
 
-<!-- INTRODUCTION -->
 <table>
 <tr class="section">
 <td colspan="3">Introduction</td>
@@ -191,91 +176,90 @@ button{
 
 <tr>
 <td colspan="3">
-<b class="non-editable">Trainer’s activity</b><br>
-• Greets the learners<br>
-• Takes the roll call<br>
-• Involves the learners in setting ground rules<br>
-• Announces the topic of the session<br>
-• Presents and explains the objectives of the session<br><br>
-
-<b class="non-editable">Learner’s activity</b><br>
-• Respond to the greetings<br>
-• Respond to the roll call<br>
-• Participate in setting ground rules<br>
-• Listen to the new topic of the session<br>
+<b>Trainer’s activity</b><br>
+<textarea rows="5">
+• Greets the learners 
+• Takes the roll call 
+• Involves the learners in setting ground rules 
+• Announces the topic of the session 
+• Presents and explains the objectives of the session
+</textarea><br>
+<b>Learner’s activity</b><br>
+<textarea rows="5">
+• Respond to the greetings 
+• Respond to the roll call 
+• Participate in setting ground rules 
+• Listen to the new topic of the session 
 • Follow the objectives of the session
+</textarea>
 </td>
-
-<td><textarea rows="4">Chalk
-Chalkboard</textarea></td>
+<td><textarea rows="5">• Chalk
+• Chalkboard</textarea></td>
 <td><input></td>
 </tr>
 
 <tr class="section">
-<td colspan="3">Development</td>
-<td>Resources</td>
-<td>Duration</td>
+<td colspan="5">Development</td>
 </tr>
 
 <tr>
 <td colspan="3">
 <b>Trainer’s activity</b><br>
-<textarea rows="4"></textarea><br>
+<textarea rows="5"></textarea><br>
 <b>Learner’s activity</b><br>
-<textarea rows="4"></textarea>
+<textarea rows="5"></textarea>
 </td>
-<td><textarea rows="4"></textarea></td>
+<td><textarea rows="5"></textarea></td>
 <td><input></td>
 </tr>
 
 <tr class="section">
-<td colspan="3">Conclusion</td>
-<td>Resources</td>
-<td>Duration</td>
+<td colspan="5">Conclusion</td>
 </tr>
 
 <tr>
 <td colspan="3">
-<b class="non-editable">Summary</b><br>
-Trainer involves learners in summarizing the session by asking questions
+<b>Summary</b><br>
+<textarea rows="4">
+Trainer involves learners in summarizing the session by asking questions 
 related to the objectives while learners participate by answering questions.
+</textarea>
 </td>
-<td><textarea rows="3"></textarea></td>
+<td><textarea rows="4">
+• Assessment sheet 
+• Chalk
+</textarea></td>
 <td><input></td>
-</tr>
-
-<tr class="section">
-<td colspan="3">Assessment</td>
-<td>Resources</td>
-<td>Duration</td>
 </tr>
 
 <tr>
 <td colspan="3">
-<b class="non-editable">Trainer’s activity</b><br>
-Trainer gives instructions related to assessment, distributes assessment sheet,
+<b>Assessment</b><br>
+<textarea rows="4">
+Trainer gives instructions related to assessment, distributes assessment sheet, 
 while learners receive and complete the assessment.
+</textarea>
 </td>
-<td><textarea rows="3">• Assessment sheet
-• Chalk</textarea></td>
+<td><textarea rows="4">
+• Assessment sheet 
+• Chalk
+</textarea></td>
 <td><input></td>
-</tr>
-
-<tr class="section">
-<td colspan="3">Evaluation of the session</td>
-<td>Resources</td>
-<td>Duration</td>
 </tr>
 
 <tr>
 <td colspan="3">
-<b class="non-editable">Evaluation of the session</b><br>
-Trainer asks trainees to give feedback on the session delivery and announce
-the next topic while learners evaluate the session by answering asked
+<b>Evaluation of the session</b><br>
+<textarea rows="4">
+Trainer asks trainees to give feedback on the session delivery and announce 
+the next topic while learners evaluate the session by answering asked 
 questions.
+</textarea>
 </td>
-<td><textarea rows="3">• Evaluation form
-• Pen/pencil</textarea></td>
+<td><textarea rows="4">
+• Evaluation form 
+• Pen/pencil
+</textarea></td>
 <td><input></td>
 </tr>
 </table>
