@@ -66,6 +66,10 @@ button{
     font-size:11px;
 }
 .paste-area img{max-height:70px;}
+.non-editable{
+    pointer-events:none;
+    user-select:none;
+}
 </style>
 </head>
 
@@ -80,10 +84,7 @@ button{
 
     <div class="center">
         <input value="ES KAVUMU TSS" style="text-align:center;font-weight:bold;">
-        <input value="District: Ngororero" style="text-align:center;">
-        <input value="Sector: Kavumu" style="text-align:center;">
-        <div><b>Email:</b> <input value="nsengumuremyialex@gmail.com"></div>
-        <div><b>Tel:</b> <input value="0788774880"></div>
+        <input value="District: Ngororero | Sector: Kavumu | Tel: 0788774880 | Email: nsengumuremyialex@gmail.com" style="text-align:center;">
     </div>
 
     <div class="paste-area" contenteditable="true" data-img="rightLogo">Paste Logo<img id="rightLogo"></div>
@@ -98,6 +99,49 @@ button{
 <th>Level</th><td><input></td>
 <th>Date</th><td><input type="date"></td>
 </tr>
+
+<tr>
+<th>Trainer name</th>
+<td colspan="3"><input></td>
+<th>Term</th>
+<td colspan="3"><input></td>
+</tr>
+
+<tr>
+<th>Module title</th>
+<td colspan="7"><input></td>
+</tr>
+
+<tr>
+<th>Week</th><td><input></td>
+<th>No. Trainees</th><td><input type="number"></td>
+<th>Class</th><td colspan="3"><input></td>
+</tr>
+
+<tr>
+<th>Learning Outcome</th>
+<td colspan="7"><textarea rows="2"></textarea></td>
+</tr>
+
+<tr>
+<th>Topic of the session</th>
+<td colspan="7"><input></td>
+</tr>
+
+<tr>
+<th>Range</th>
+<td colspan="7"><textarea rows="4"></textarea></td>
+</tr>
+
+<tr>
+<th>Objectives</th>
+<td colspan="7"><textarea rows="5"></textarea></td>
+</tr>
+
+<tr>
+<th>Facilitation techniques</th>
+<td colspan="7"><textarea rows="3"></textarea></td>
+</tr>
 </table>
 
 <br>
@@ -111,14 +155,14 @@ button{
 
 <tr>
 <td colspan="3">
-<b>Trainer’s activity</b><br>
+<b class="non-editable">Trainer’s activity</b><br>
 • Greets the learners<br>
 • Takes the roll call<br>
 • Involves the learners in setting ground rules<br>
 • Announces the topic of the session<br>
 • Presents and explains the objectives of the session<br><br>
 
-<b>Learner’s activity</b><br>
+<b class="non-editable">Learner’s activity</b><br>
 • Respond to the greetings<br>
 • Respond to the roll call<br>
 • Participate in setting ground rules<br>
@@ -126,11 +170,8 @@ button{
 • Follow the objectives of the session
 </td>
 
-<td>
-<textarea rows="4">Chalk
-Chalkboard</textarea>
-</td>
-
+<td><textarea rows="4">Chalk
+Chalkboard</textarea></td>
 <td><input></td>
 </tr>
 
@@ -159,7 +200,7 @@ Chalkboard</textarea>
 
 <tr>
 <td colspan="3">
-<b>Summary</b><br>
+<b class="non-editable">Summary</b><br>
 Trainer involves learners in summarizing the session by asking questions
 related to the objectives while learners participate by answering questions.
 </td>
@@ -175,10 +216,11 @@ related to the objectives while learners participate by answering questions.
 
 <tr>
 <td colspan="3">
+<b class="non-editable">Trainer’s activity</b><br>
 Trainer gives instructions related to assessment, distributes assessment sheet,
 while learners receive and complete the assessment.
 </td>
-<td>• Attendance sheet</td>
+<td><textarea rows="3">• Attendance sheet</textarea></td>
 <td><input></td>
 </tr>
 
@@ -190,15 +232,26 @@ while learners receive and complete the assessment.
 
 <tr>
 <td colspan="3">
+<b class="non-editable">Evaluation of the session</b><br>
 Trainer asks trainees to give feedback on the session delivery and announce
 the next topic while learners evaluate the session by answering asked
 questions.
 </td>
-<td>• Various drawing materials</td>
+<td><textarea rows="3">• Various drawing materials</textarea></td>
 <td><input></td>
 </tr>
-
 </table>
+
+<br>
+
+<b>References:</b>
+<textarea rows="4" style="width:100%;border:1px solid black;"
+placeholder="• Book / Author / Year&#10;• Curriculum document"></textarea>
+
+<br><br>
+
+<b>Reflection:</b>
+<textarea rows="3" style="width:100%;border:1px solid black;"></textarea>
 
 </div>
 
